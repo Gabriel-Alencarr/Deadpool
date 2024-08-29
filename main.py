@@ -48,7 +48,6 @@ def scroll_down(driver: WebDriver, pause_time: int = 1) -> None:
                 )
             time.sleep(2)
         except NoSuchElementException:
-            print("Botão 'loadMore' não encontrado.")
             break
         except Exception as e:
             print(f"Erro ao clicar no botão 'loadMore': {e}")
@@ -82,20 +81,26 @@ try:
     news_elements = driver.find_elements(
         By.CSS_SELECTOR, ".c-newslist article"
         )
-    with open("deadpool_news.txt", "w", encoding="utf-8") as file:
-        for news in news_elements:
-            title = news.find_element(
-                By.CSS_SELECTOR, "h2"
-                ).text
-            date = news.find_element(
-                By.CSS_SELECTOR, ".mark__time"
-                ).text
-            file.write(f"Título: {title}\n")
-            file.write(f"Data: {date}\n")
-            file.write("\n")
+    
+    data = []
+    for news in news_elements:
+        title = news.find_element(By.CSS_SELECTOR, "h2").text
+        date = news.find_element(By.CSS_SELECTOR, ".mark__time").text
+        data.append({"title": title, "date": date})
 
+    with open(
+        "deadpool_news.txt", "w", encoding="utf-8") as file_all, open(
+            "title_deadpool.txt", "w", encoding="utf-8") as file_only_title:
+        for news in data:
+            file_all.write(f"Título: {news['title']}\n")
+            file_all.write(f"Data: {news['date']}\n")
+            file_all.write("\n")
+
+            if "Deadpool" in news['title']:
+                file_only_title.write(f"Título: {news['title']}\n")
+                file_only_title.write(f"Data: {news['date']}\n")
+                file_only_title.write("\n")                                         
 except Exception as error:
-
     print(f"Erro: {str(error)}")
 
 finally:

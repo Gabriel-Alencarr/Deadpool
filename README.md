@@ -19,9 +19,9 @@ notícias sobre "Deadpool" no site Omelete, extraindo títulos e datas, e salvan
 O script automatiza o Chrome para navegar até o site Omelete, buscar pelo nome "Deadpool",
 rolar a página para carregar TODOS os resultados e salvar os títulos e datas das notícias encontradas.
 
-No arquivo title_deadpool.txt, ficaram somente as notícias que possuem o nome Deadpool no TÍTULO.
+No arquivo title_deadpool.txt, serão inseridas somente as notícias que possuem o nome Deadpool no TÍTULO.
 
-no arquivo deadpool_news.txt ficaram as notícias relacionadas ao Deadpool, tanto as notícias que tenham o nome Deadpool no título,
+no arquivo deadpool_news.txt serão inseridas as notícias relacionadas ao Deadpool, tanto as notícias que tenham o nome Deadpool no título,
 quanto as que não tenham o nome no título, mas falam sobre dentro do artigo.
 
 
